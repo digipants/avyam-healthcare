@@ -408,8 +408,8 @@ html[data-w-dynpage] [data-w-cloak] {
 
 .w-digipants-badge {
     position: fixed !important;
-    display: inline-block !important;
-    visibility: visible !important;
+    display: none !important;
+    visibility: hidden !important;
     z-index: 2147483647 !important;
     top: auto !important;
     right: 12px !important;
@@ -6612,6 +6612,10 @@ blockquote {
     color: #000;
     font-size: 18px;
     font-weight: 500;
+}
+
+.logo-image {
+    max-width: 300px;
 }
 
 @media screen and (min-width: 1280px) {
