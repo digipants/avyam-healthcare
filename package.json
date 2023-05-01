@@ -20,5 +20,8 @@
   "homepage": "https://github.com/digipants/avyam-healthcare#readme",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.0"
+  },
+  "dependencies": {
+    "twilio": "^4.10.0"
   }
 }
