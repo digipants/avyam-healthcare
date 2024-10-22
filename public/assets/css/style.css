@@ -3203,14 +3203,14 @@ blockquote {
 
 .slider-section {
     background-color: #e9f0ff;
-    background-image: url("https://assets.website-files.com/63afc46367bbed70af80a31a/63cf58340642935ede6b2654_slider-bg-image-1.jpg");
+    background-image: url("/assets/images/63b3f9e2d9818851cf576a6f/backgorund\ image.png");
     background-position: 50% 50%;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .slider-section.slider-section-two {
-    background-image: url("https://assets.website-files.com/63afc46367bbed70af80a31a/63cf62ebd3d7de3228d98f63_slider-2-bg-image-2.jpg");
+    background-image: url("/assets/images/63b3f9e2d9818851cf576a6f/backgorund\ image.png");
     background-position: 50% 50%;
     background-size: cover;
 }
@@ -3827,12 +3827,22 @@ blockquote {
     grid-column-gap: 130px;
 }
 
-.choose-wrapper.choose-wrapper-two {
+/* here  i changed the script peace */
+
+.choose-wrapper.choose-wrapper-two1 {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: reverse;
     -webkit-flex-direction: row-reverse;
     -ms-flex-direction: row-reverse;
     flex-direction: row-reverse;
+    grid-column-gap: 64px;
+}
+.choose-wrapper.choose-wrapper-two1 {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+    /* -webkit-flex-direction: row-reverse; */
+    -ms-flex-direction: row-reverse;
+    /* flex-direction: row-reverse; */
     grid-column-gap: 64px;
 }
 
@@ -5029,7 +5039,7 @@ blockquote {
 .breadcrumb-section.about-page {
     padding-bottom: 514px;
     background-color: #e9f0ff;
-    background-image: url("https://assets.website-files.com/63afc46367bbed70af80a31a/63c7bddec4465801b411cd31_about-breadcrumb.png");
+    background-image: url("/assets/images/63b3f9e2d9818851cf576a6f/BG\ About\ \(2\).png");
     background-position: 50% 100%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -6779,6 +6789,7 @@ blockquote {
         align-items: center;
         grid-column-gap: 64px;
     }
+    
 
     .team-section {
         padding-top: 120px;
@@ -16323,3 +16334,10 @@ container {
     background: #fff;
     height: 480px
 }
+
+
+
+/*    nyi css       */
+
+
+/* 5042 About us backgroound image */
