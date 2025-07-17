@@ -3295,14 +3295,40 @@ blockquote {
 
 .slider-section {
     background-color: #e9f0ff;
-    background-image: url("/assets/images/63b3f9e2d9818851cf576a6f/Bgnew1.png");
+    background-image: url("/assets/images/63b3f9e2d9818851cf576a6f/Bgnew1.jpg");
     background-position: 50% 50%;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .slider-section.slider-section-two {
-    background-image: url("/assets/images/63b3f9e2d9818851cf576a6f/Bgnew1.png");
+    background-image: url("/assets/images/63b3f9e2d9818851cf576a6f/Bgnew1.jpg");
+    background-position: 50% 50%;
+    background-size: cover;
+}
+.slider-section1 {
+    background-color: #e9f0ff;
+    background-image: url("/assets/images/63b3f9e2d9818851cf576a6f/consultancy.jpg");
+    background-position: 50% 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.slider-section1.slider-section-two1 {
+    background-image: url("/assets/images/63b3f9e2d9818851cf576a6f/consultancy.jpg");
+    background-position: 50% 50%;
+    background-size: cover;
+}
+.slider-section2 {
+    background-color: #e9f0ff;
+    background-image: url("/assets/images/63b3f9e2d9818851cf576a6f/homecare.jpg");
+    background-position: 50% 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.slider-section2.slider-section-two2 {
+    background-image: url("/assets/images/63b3f9e2d9818851cf576a6f/homecare.jpg");
     background-position: 50% 50%;
     background-size: cover;
 }
@@ -6758,7 +6784,7 @@ blockquote {
         grid-row-gap: 20px;
     }
     .container {
-        max-width: 1200px;
+        max-width: 1500px;
     }
 
     .nav-menu-two {
@@ -7022,6 +7048,7 @@ blockquote {
 
     .service-tabs-menu {
         margin-bottom: 65px;
+        justify-content: center;
     }
 
     .service-tab-link {
@@ -7034,6 +7061,7 @@ blockquote {
         -webkit-align-items: center;
         -ms-flex-align: center;
         align-items: center;
+        justify-content: center;
         grid-column-gap: 105px;
     }
 
@@ -7345,6 +7373,7 @@ blockquote {
 
     .service-tabs-menu {
         margin-bottom: 65px;
+        justify-content: center;
     }
 
     .testimonial-two-wrapper.testimonial-page {
@@ -7588,12 +7617,12 @@ blockquote {
 
     .header-content-wrapper.d-u-md-block.nav-sidebar {
         display: block;
-        margin-top: 30px;
+        /* margin-top: 30px; */
         margin-bottom: 30px;
         padding-top: 30px;
         padding-bottom: 30px;
         padding-left: 30px;
-        border-top: 1px solid hsla(0, 0%, 100%, 0.6);
+        /* border-top: 1px solid hsla(0, 0%, 100%, 0.6); */
         border-bottom: 1px solid hsla(0, 0%, 100%, 0.6);
         color: #fff;
         font-weight: 500;
