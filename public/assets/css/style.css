@@ -6765,10 +6765,6 @@ blockquote {
         grid-row-gap: 20px;
     }
 }
-@media screen and (min-width: 1280px) {
-    .team-item{
-    width: 33%;
-}
     .slider-content-inner {
         display: -webkit-box;
         display: -webkit-flex;
