@@ -4163,7 +4163,7 @@ blockquote {
 
 .team-thumbnail-block.team-two {
     width: 100%;
-    max-width: 244px;
+    max-width: 100px;
     border-top-right-radius: 0px;
     border-bottom-left-radius: 6px;
 }
@@ -6766,6 +6766,9 @@ blockquote {
     }
 }
 @media screen and (min-width: 1280px) {
+    .team-item{
+    width: 33%;
+}
     .slider-content-inner {
         display: -webkit-box;
         display: -webkit-flex;
