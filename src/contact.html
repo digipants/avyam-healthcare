@@ -383,6 +383,20 @@
         }
     });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Disable Webflow's AJAX form behavior so Netlify can process the form
+    document.querySelectorAll('form.w-form form, form.w-form').forEach(form => {
+        form.setAttribute("data-netlify", "true");
+        form.removeAttribute("data-wf-form"); // important
+        form.setAttribute("novalidate", "novalidate"); // avoid Webflow override
+    });
+
+    // Remove Webflow's onsubmit JS
+    var form = document.getElementById("email-form");
+    form.onsubmit = null;
+});
+</script>
 
     <!--[if lte IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
 </body>
