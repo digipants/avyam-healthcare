@@ -152,25 +152,47 @@
                     <div class="contact-form">
                         <h3 class="message-title">Send Message</h3>
                         <div class="form-block w-form">
-                            <form id="email-form" name="email-form" data-name="Email Form" method="get"
-                                class="agency-form-2"><input type="text"
-                                    class="form-field w-node-_58f3be4c-300e-e8c7-84b1-bcd0d9413e94-15868356 w-input"
-                                    maxlength="256" name="Name" data-name="Name" placeholder="Name" id="Name"
-                                    required="" /><input type="email"
-                                    class="form-field w-node-_58f3be4c-300e-e8c7-84b1-bcd0d9413e95-15868356 w-input"
-                                    maxlength="256" name="email" data-name="Email" placeholder="Email" id="email"
-                                    required="" /><input type="tel"
-                                    class="form-field w-node-_58f3be4c-300e-e8c7-84b1-bcd0d9413e96-15868356 w-input"
-                                    maxlength="256" name="Phone" data-name="Phone" placeholder="Phone" id="Phone"
-                                    required="" /><input type="text"
-                                    class="form-field w-node-_58f3be4c-300e-e8c7-84b1-bcd0d9413e97-15868356 w-input"
-                                    maxlength="256" name="Subject" data-name="Subject" placeholder="Subject"
-                                    id="Subject" required="" /><textarea placeholder="Write message here"
-                                    maxlength="5000" id="Message" name="Message" data-name="Message"
-                                    class="form-field form-textarea max-height-243px w-node-_58f3be4c-300e-e8c7-84b1-bcd0d9413e98-15868356 w-input"></textarea><input
-                                    type="submit" value="Send Message" data-wait="Please wait..."
-                                    id="w-node-_58f3be4c-300e-e8c7-84b1-bcd0d9413e99-15868356"
-                                    class="button-primary contact-button w-button" /></form>
+                            <form id="email-form" name="email-form" method="POST" data-netlify="true" class="agency-form-2">
+
+    <!-- Mandatory hidden field for Netlify -->
+    <input type="hidden" name="form-name" value="email-form">
+
+    <input type="text"
+        class="form-field w-input"
+        maxlength="256" name="Name" placeholder="Name" id="Name" required>
+
+    <input type="email"
+        class="form-field w-input"
+        maxlength="256" name="Email" placeholder="Email" id="email" required>
+
+    <input type="tel"
+        class="form-field w-input"
+        maxlength="20" name="Phone" placeholder="Phone" id="Phone" required>
+
+    <input type="text"
+        class="form-field w-input"
+        maxlength="256" name="Subject" placeholder="Subject" id="Subject" required>
+
+    <!-- SERVICE TYPE DROPDOWN -->
+    <select id="serviceType" name="serviceType"
+        class="form-field w-input" required>
+        <option value="">Select Service Type</option>
+        <option value="consultancy">Consultancy</option>
+        <option value="homecare">Homecare</option>
+    </select>
+
+    <!-- SERVICE LIST DROPDOWN -->
+    <select title="Services" id="serviceList" name="serviceList"
+        class="form-field w-input" required>
+        <option value="">Select Service</option>
+    </select>
+    <textarea placeholder="Write message here"
+        maxlength="5000" id="Message" name="Message" data-name="Message"
+        class="form-field form-textarea max-height-243px w-node-_58f3be4c-300e-e8c7-84b1-bcd0d9413e98-15868356 w-input" required></textarea><br>
+
+    <input type="submit" value="Send Message" class="button-primary contact-button w-button">
+</form>
+
                             <div class="w-form-done">
                                 <div>Thank you! Your submission has been received!</div>
                             </div>
@@ -273,6 +295,96 @@
         type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
         crossorigin="anonymous"></script>
     <script src="/assets/js/app.js" type="text/javascript"></script>
+<script>
+    const serviceType = document.getElementById('serviceType');
+    const serviceList = document.getElementById('serviceList');
+
+    const consultancyServices = [
+        "Human Resource & Planning",
+        "Financial Advisory and Funding",
+        "Hospital Operation & Management",
+        "Digital Healthcare Transformation",
+        "Mergers & Acquisitions",
+        "Project Management & Consultation",
+        "Medical Equipment and Planning",
+        "Hospital Design & Planning"
+    ];
+
+    const homecareServices = [
+        "Physiotherapy",
+        "Nursing Care",
+        "Trained Attendants",
+        "Medical Equipment",
+        "Vaccination",
+        "Counselling",
+        "Diabetes Care",
+        "Elder Care",
+        "Doctor Consultation"
+    ];
+
+    serviceType.addEventListener('change', function () {
+        serviceList.innerHTML = '<option value="">Select Service</option>';
+
+        if (this.value === "consultancy") {
+            consultancyServices.forEach(service => {
+                serviceList.innerHTML += `<option value="${service}">${service}</option>`;
+            });
+        }
+
+        if (this.value === "homecare") {
+            homecareServices.forEach(service => {
+                serviceList.innerHTML += `<option value="${service}">${service}</option>`;
+            });
+        }
+    });
+</script>
+
+<script>
+    // SERVICES DATA
+    const services = {
+        consultancy: [
+            "Business Strategy",
+            "Compliance Consulting",
+            "Health Management Consulting",
+            "Staff Training & Development"
+        ],
+        homecare: [
+            "Elderly Care",
+            "Post-Surgery Care",
+            "Nursing Care",
+            "Disability Support"
+        ]
+    };
+
+    const serviceType = document.getElementById("serviceType");
+    const serviceList = document.getElementById("serviceList");
+
+    // Update services based on type
+    serviceType.addEventListener("change", function () {
+        const selected = this.value;
+
+        // Reset options
+        serviceList.innerHTML = '<option value="">Select Service</option>';
+
+        if (services[selected]) {
+            services[selected].forEach(service => {
+                const option = document.createElement("option");
+                option.value = service;
+                option.textContent = service;
+                serviceList.appendChild(option);
+            });
+        }
+    });
+
+    // Basic Form Validation
+    document.getElementById("email-form").addEventListener("submit", function (e) {
+        if (serviceType.value === "" || serviceList.value === "") {
+            alert("Please select both service type and service.");
+            e.preventDefault();
+        }
+    });
+</script>
+
     <!--[if lte IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
 </body>
 
