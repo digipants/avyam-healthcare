@@ -154,44 +154,34 @@
                         <div class="form-block w-form">
                             <form id="email-form" name="email-form" method="POST" data-netlify="true" class="agency-form-2">
 
-    <!-- Mandatory hidden field for Netlify -->
     <input type="hidden" name="form-name" value="email-form">
 
-    <input type="text"
-        class="form-field w-input"
-        maxlength="256" name="Name" placeholder="Name" id="Name" required>
+    <input type="text" class="form-field w-input" maxlength="256" name="Name" placeholder="Name" required>
 
-    <input type="email"
-        class="form-field w-input"
-        maxlength="256" name="Email" placeholder="Email" id="email" required>
+    <input type="email" class="form-field w-input" maxlength="256" name="Email" placeholder="Email" required>
 
-    <input type="tel"
-        class="form-field w-input"
-        maxlength="20" name="Phone" placeholder="Phone" id="Phone" required>
+    <input type="tel" class="form-field w-input" maxlength="20" name="Phone" placeholder="Phone" required>
 
-    <input type="text"
-        class="form-field w-input"
-        maxlength="256" name="Subject" placeholder="Subject" id="Subject" required>
+    <input type="text" class="form-field w-input" maxlength="256" name="Subject" placeholder="Subject" required>
 
-    <!-- SERVICE TYPE DROPDOWN -->
-    <select id="serviceType" name="serviceType"
-        class="form-field w-input" required>
+    <select id="serviceType" name="serviceType" class="form-field w-input" required>
         <option value="">Select Service Type</option>
         <option value="consultancy">Consultancy</option>
         <option value="homecare">Homecare</option>
     </select>
 
-    <!-- SERVICE LIST DROPDOWN -->
-    <select title="Services" id="serviceList" name="serviceList"
-        class="form-field w-input" required>
+    <select id="serviceList" name="serviceList" class="form-field w-input" required>
         <option value="">Select Service</option>
     </select>
+
     <textarea placeholder="Write message here"
-        maxlength="5000" id="Message" name="Message" data-name="Message"
-        class="form-field form-textarea max-height-243px w-node-_58f3be4c-300e-e8c7-84b1-bcd0d9413e98-15868356 w-input" required></textarea><br>
+        maxlength="5000" id="Message" name="Message"
+        class="form-field form-textarea w-input"
+        style="width: 100%;" required></textarea>
 
     <input type="submit" value="Send Message" class="button-primary contact-button w-button">
 </form>
+
 
                             <div class="w-form-done">
                                 <div>Thank you! Your submission has been received!</div>
@@ -295,8 +285,11 @@
         type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
         crossorigin="anonymous"></script>
 <script>
-    const serviceType = document.getElementById('serviceType');
-    const serviceList = document.getElementById('serviceList');
+document.addEventListener("DOMContentLoaded", function () {
+    
+    // Dynamic service dropdown
+    const serviceType = document.getElementById("serviceType");
+    const serviceList = document.getElementById("serviceList");
 
     const consultancyServices = [
         "Human Resource & Planning",
@@ -321,22 +314,39 @@
         "Doctor Consultation"
     ];
 
-    serviceType.addEventListener('change', function () {
+    serviceType.addEventListener("change", function () {
         serviceList.innerHTML = '<option value="">Select Service</option>';
-
-        if (this.value === "consultancy") {
-            consultancyServices.forEach(service => {
-                serviceList.innerHTML += `<option value="${service}">${service}</option>`;
-            });
-        }
-
-        if (this.value === "homecare") {
-            homecareServices.forEach(service => {
-                serviceList.innerHTML += `<option value="${service}">${service}</option>`;
-            });
-        }
+        let list = this.value === "consultancy" ? consultancyServices : homecareServices;
+        list.forEach(s => serviceList.innerHTML += `<option value="${s}">${s}</option>`);
     });
+
+
+    // Netlify manual submission
+    const form = document.getElementById("email-form");
+    form.removeAttribute("data-wf-form"); // disable Webflow
+    form.onsubmit = null;
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault(); // stop default submit
+
+        const formData = new FormData(form);
+
+        fetch("/", {
+            method: "POST",
+            body: formData
+        })
+        .then(() => {
+            alert("Successfully submitted!");
+            window.location.reload();
+        })
+        .catch(() => {
+            alert("Submission failed. Please try again.");
+        });
+    });
+
+});
 </script>
+
 
 <script>
     // SERVICES DATA
@@ -397,7 +407,7 @@ document.addEventListener("DOMContentLoaded", function () {
     form.onsubmit = null;
 });
 </script>
-
+<script src="/assets/js/app.js" type="text/javascript"></script>
     <!--[if lte IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
 </body>
 
