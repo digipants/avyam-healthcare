@@ -9043,9 +9043,7 @@ blockquote {
     }
 
     .team-list {
-        grid-row-gap: 40px;
-        -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 
     .single-team-wrapper.team-two {
